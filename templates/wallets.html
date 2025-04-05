@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-wallet me-2"></i>Your Wallets</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Balance</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="wallets-list">
+                            <tr>
+                                <td colspan="4" class="text-center">Loading wallets...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-plus-circle me-2"></i>Create New Wallet</h5>
+            </div>
+            <div class="card-body">
+                <form id="create-wallet-form">
+                    <div class="mb-3">
+                        <label for="wallet-name" class="form-label">Wallet Name</label>
+                        <input type="text" class="form-control" id="wallet-name" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Create Wallet</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-exchange-alt me-2"></i>Send Transaction</h5>
+            </div>
+            <div class="card-body">
+                <form id="send-transaction-form">
+                    <div class="mb-3">
+                        <label for="from-wallet" class="form-label">From Wallet</label>
+                        <select class="form-select" id="from-wallet" required>
+                            <option value="">Select wallet...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="to-address" class="form-label">To Address</label>
+                        <input type="text" class="form-control" id="to-address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount (GRISH)</label>
+                        <input type="number" class="form-control" id="amount" min="0" step="0.000001" required>
+                    </div>
+                    <button type="submit" class="btn btn-info w-100">Send Transaction</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Загрузка списка кошельков
+    function loadWallets() {
+        fetch('/api/wallets')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('wallets-list');
+                const fromWalletSelect = document.getElementById('from-wallet');
+                
+                // Очищаем и обновляем список кошельков
+                tbody.innerHTML = '';
+                fromWalletSelect.innerHTML = '<option value="">Select wallet...</option>';
+                
+                data.wallets.forEach(wallet => {
+                    // Добавляем в таблицу
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${wallet.name}</td>
+                        <td><code>${wallet.address}</code></td>
+                        <td>${wallet.balance} GRISH</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary copy-address" data-address="${wallet.address}">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                    
+                    // Добавляем в select для отправки транзакций
+                    const option = document.createElement('option');
+                    option.value = wallet.address;
+                    option.textContent = `${wallet.name} (${wallet.balance} GRISH)`;
+                    fromWalletSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error loading wallets:', error));
+    }
+
+    // Копирование адреса в буфер обмена
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.copy-address')) {
+            const address = e.target.closest('.copy-address').dataset.address;
+            navigator.clipboard.writeText(address)
+                .then(() => alert('Address copied to clipboard!'))
+                .catch(err => console.error('Error copying address:', err));
+        }
+    });
+
+    // Создание нового кошелька
+    document.getElementById('create-wallet-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const walletName = document.getElementById('wallet-name').value;
+        
+        fetch('/api/create-wallet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: walletName })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Wallet created successfully!\nAddress: ' + data.address);
+                document.getElementById('wallet-name').value = '';
+                loadWallets();
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error creating wallet:', error);
+            alert('Error creating wallet');
+        });
+    });
+
+    // Отправка транзакции
+    document.getElementById('send-transaction-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const fromAddress = document.getElementById('from-wallet').value;
+        const toAddress = document.getElementById('to-address').value;
+        const amount = parseFloat(document.getElementById('amount').value);
+        
+        fetch('/api/transaction', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                from: fromAddress,
+                to: toAddress,
+                amount: amount
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Transaction sent successfully!');
+                document.getElementById('to-address').value = '';
+                document.getElementById('amount').value = '';
+                loadWallets();
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error sending transaction:', error);
+            alert('Error sending transaction');
+        });
+    });
+
+    // Периодическое обновление списка кошельков
+    loadWallets();
+    setInterval(loadWallets, 5000);
+});
+</script>
+{% endblock %} 

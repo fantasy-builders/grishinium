@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-cube me-2"></i>Blockchain Overview</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Current Block Height</h6>
+                        <p class="h3" id="block-height">Loading...</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Pending Transactions</h6>
+                        <p class="h3" id="pending-tx">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-network-wired me-2"></i>Network Status</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Node</th>
+                                <th>Status</th>
+                                <th>Last Block</th>
+                                <th>Peers</th>
+                            </tr>
+                        </thead>
+                        <tbody id="node-status">
+                            {% for node in nodes %}
+                            <tr>
+                                <td>{{ node.name }}</td>
+                                <td>
+                                    <span class="status-indicator status-offline"></span>
+                                    <span class="status-text">Checking...</span>
+                                </td>
+                                <td>Loading...</td>
+                                <td>Loading...</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-wallet me-2"></i>Main Wallet</h5>
+            </div>
+            <div class="card-body">
+                <div id="main-wallet-info">
+                    <p>Loading main wallet information...</p>
+                </div>
+                <button class="btn btn-primary w-100 mt-3" id="initialize-main-wallet">
+                    Initialize Main Wallet
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="card-title mb-0"><i class="fas fa-plus-circle me-2"></i>Create New Wallet</h5>
+            </div>
+            <div class="card-body">
+                <form id="create-wallet-form">
+                    <div class="mb-3">
+                        <label for="wallet-name" class="form-label">Wallet Name</label>
+                        <input type="text" class="form-control" id="wallet-name" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">Create Wallet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Обновление статуса нод
+    function updateNodeStatus() {
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('node-status');
+                tbody.innerHTML = '';
+                
+                Object.entries(data).forEach(([url, status]) => {
+                    const node = {{ nodes|tojson }}.find(n => n.url === url);
+                    if (node) {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${node.name}</td>
+                            <td>
+                                <span class="status-indicator status-${status.status}"></span>
+                                <span class="status-text">${status.status}</span>
+                            </td>
+                            <td>${status.data?.last_block || 'N/A'}</td>
+                            <td>${status.data?.peers || 'N/A'}</td>
+                        `;
+                        tbody.appendChild(row);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching node status:', error));
+    }
+
+    // Обновление информации о блокчейне
+    function updateBlockchainInfo() {
+        fetch('/api/chain')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('block-height').textContent = data.current_node.blocks.length;
+                document.getElementById('pending-tx').textContent = data.current_node.pending_transactions.length;
+            })
+            .catch(error => console.error('Error fetching chain info:', error));
+    }
+
+    // Обновление информации о главном кошельке
+    function updateMainWalletInfo() {
+        fetch('/api/main-wallet')
+            .then(response => response.json())
+            .then(data => {
+                const mainWalletInfo = document.getElementById('main-wallet-info');
+                mainWalletInfo.innerHTML = `
+                    <p><strong>Address:</strong> ${data.address}</p>
+                    <p><strong>Balance:</strong> ${data.balance} GRISH</p>
+                `;
+            })
+            .catch(error => console.error('Error fetching main wallet info:', error));
+    }
+
+    // Инициализация главного кошелька
+    document.getElementById('initialize-main-wallet').addEventListener('click', function() {
+        fetch('/api/initialize-main-wallet', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Main wallet initialized successfully!');
+                    updateMainWalletInfo();
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error initializing main wallet:', error);
+                alert('Error initializing main wallet');
+            });
+    });
+
+    // Создание нового кошелька
+    document.getElementById('create-wallet-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const walletName = document.getElementById('wallet-name').value;
+        
+        fetch('/api/create-wallet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: walletName })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Wallet created successfully!\nAddress: ' + data.address);
+                document.getElementById('wallet-name').value = '';
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error creating wallet:', error);
+            alert('Error creating wallet');
+        });
+    });
+
+    // Периодическое обновление данных
+    updateNodeStatus();
+    updateBlockchainInfo();
+    updateMainWalletInfo();
+    
+    setInterval(updateNodeStatus, 5000);
+    setInterval(updateBlockchainInfo, 5000);
+    setInterval(updateMainWalletInfo, 5000);
+});
+</script>
+{% endblock %} 

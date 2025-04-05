@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-cubes me-2"></i>Blockchain Explorer</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Height</th>
+                                <th>Hash</th>
+                                <th>Previous Hash</th>
+                                <th>Timestamp</th>
+                                <th>Transactions</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blocks-list">
+                            <tr>
+                                <td colspan="6" class="text-center">Loading blocks...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal для просмотра деталей блока -->
+<div class="modal fade" id="blockModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Block Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="block-details">
+                    Loading block details...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Загрузка списка блоков
+    function loadBlocks() {
+        fetch('/api/chain')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('blocks-list');
+                tbody.innerHTML = '';
+                
+                data.current_node.blocks.forEach(block => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${block.index}</td>
+                        <td><code>${block.hash}</code></td>
+                        <td><code>${block.previous_hash}</code></td>
+                        <td>${new Date(block.timestamp * 1000).toLocaleString()}</td>
+                        <td>${block.transactions.length}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary view-block" data-block='${JSON.stringify(block)}'>
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error loading blocks:', error));
+    }
+
+    // Просмотр деталей блока
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.view-block')) {
+            const block = JSON.parse(e.target.closest('.view-block').dataset.block);
+            const modal = new bootstrap.Modal(document.getElementById('blockModal'));
+            
+            const details = document.getElementById('block-details');
+            details.innerHTML = `
+                <div class="mb-3">
+                    <h6>Block Information</h6>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Height:</th>
+                            <td>${block.index}</td>
+                        </tr>
+                        <tr>
+                            <th>Hash:</th>
+                            <td><code>${block.hash}</code></td>
+                        </tr>
+                        <tr>
+                            <th>Previous Hash:</th>
+                            <td><code>${block.previous_hash}</code></td>
+                        </tr>
+                        <tr>
+                            <th>Timestamp:</th>
+                            <td>${new Date(block.timestamp * 1000).toLocaleString()}</td>
+                        </tr>
+                        <tr>
+                            <th>Nonce:</th>
+                            <td>${block.nonce}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div>
+                    <h6>Transactions (${block.transactions.length})</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Amount</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${block.transactions.map(tx => `
+                                    <tr>
+                                        <td><code>${tx.from}</code></td>
+                                        <td><code>${tx.to}</code></td>
+                                        <td>${tx.amount} GRISH</td>
+                                        <td>${new Date(tx.timestamp * 1000).toLocaleString()}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            
+            modal.show();
+        }
+    });
+
+    // Периодическое обновление списка блоков
+    loadBlocks();
+    setInterval(loadBlocks, 5000);
+});
+</script>
+{% endblock %} 
