@@ -98,7 +98,7 @@ class GrishiniumNode:
         
         Args:
             amount: Количество монет для стейкинга
-            
+        
         Returns:
             bool: Успешность операции
         """
@@ -243,7 +243,7 @@ def main():
     signal.signal(signal.SIGTERM, signal_handler)
     
     try:
-        node.start()
+        node.start() 
     except Exception as e:
         logger.error(f"Критическая ошибка: {e}")
         node.stop()

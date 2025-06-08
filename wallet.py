@@ -201,7 +201,7 @@ class GrishiniumWallet:
             default_backend()
         )
         
-        # Получаем соответствующий публичный ключ
+        # Получаем публичный ключ из приватного
         public_key = private_key.public_key()
         
         return private_key, public_key
@@ -656,6 +656,87 @@ class GrishiniumWallet:
         
         transaction["signature"] = self.sign_transaction(transaction)
         return transaction
+
+    def generate_seed_phrase(self) -> str:
+        """
+        Возвращает seed-фразу для текущего кошелька.
+        
+        Returns:
+            str: Seed-фраза из 12 слов.
+        """
+        return self.seed_phrase
+    
+    # Добавляем новые статические методы для создания и импорта кошельков
+    
+    @classmethod
+    def create(cls, wallet_name: str) -> 'GrishiniumWallet':
+        """
+        Создает новый кошелек с случайно сгенерированной seed-фразой.
+        
+        Args:
+            wallet_name: Имя кошелька.
+            
+        Returns:
+            GrishiniumWallet: Новый экземпляр кошелька.
+        """
+        # Создаем кошелек с новой seed-фразой
+        return cls(wallet_name=wallet_name)
+    
+    @classmethod
+    def from_seed_phrase(cls, seed_phrase: str, wallet_name: str) -> 'GrishiniumWallet':
+        """
+        Создает кошелек из существующей seed-фразы.
+        
+        Args:
+            seed_phrase: Seed-фраза (12 слов).
+            wallet_name: Имя кошелька.
+            
+        Returns:
+            GrishiniumWallet: Экземпляр кошелька, восстановленный из seed-фразы.
+            
+        Raises:
+            InvalidSeedError: Если seed-фраза некорректна.
+        """
+        # Проверяем seed-фразу перед созданием кошелька
+        words = seed_phrase.strip().lower().split()
+        
+        if len(words) != 12:
+            raise InvalidSeedError("Seed-фраза должна содержать 12 слов")
+        
+        # Проверяем, что все слова есть в словаре
+        for word in words:
+            if word not in BIP39_WORDLIST:
+                raise InvalidSeedError(f"Слово '{word}' отсутствует в словаре BIP39")
+        
+        # Создаем кошелек из seed-фразы
+        return cls(seed_phrase=seed_phrase, wallet_name=wallet_name)
+    
+    def get_public_key_str(self) -> str:
+        """
+        Возвращает публичный ключ в виде строки в формате PEM.
+        
+        Returns:
+            str: Публичный ключ в формате PEM, закодированный в base64.
+        """
+        pem = self.public_key.public_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PublicFormat.SubjectPublicKeyInfo
+        )
+        return base64.b64encode(pem).decode('utf-8')
+    
+    def get_private_key_str(self) -> str:
+        """
+        Возвращает приватный ключ в виде строки в формате PEM.
+        
+        Returns:
+            str: Приватный ключ в формате PEM, закодированный в base64.
+        """
+        pem = self.private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption()
+        )
+        return base64.b64encode(pem).decode('utf-8')
 
 def create_new_wallet(password: str = None, wallet_name: str = None) -> Tuple[str, str]:
     """

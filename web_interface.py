@@ -92,7 +92,10 @@ initialize_main_wallet()
 TASK_REWARDS = {
     'telegram': 0.1,  # 0.1 GRISH за подписку на Telegram канал
     'twitter': 0.1,   # 0.1 GRISH за подписку на Twitter
-    'linkedin': 0.1   # 0.1 GRISH за подписку на LinkedIn
+    'linkedin': 0.1,   # 0.1 GRISH за подписку на LinkedIn
+    'mining': 0.05,   # 0.05 GRISH за сессию майнинга
+    'daily': 0.2,     # 0.2 GRISH за выполнение ежедневного задания
+    'skills': 1.0     # 1.0 GRISH за подтверждение навыков
 }
 
 # Список доступных заданий
@@ -110,6 +113,21 @@ AVAILABLE_TASKS = {
     ],
     'linkedin': [
         {'id': 'grishinium_company', 'name': 'Grishinium Company', 'url': 'https://linkedin.com/company/grishinium'}
+    ],
+    'mining': [
+        {'id': 'cpu_mining', 'name': 'CPU Mining', 'difficulty': 1, 'url': '/mining/cpu'},
+        {'id': 'gpu_mining', 'name': 'GPU Mining', 'difficulty': 2, 'url': '/mining/gpu'},
+        {'id': 'brain_mining', 'name': 'Brain Mining', 'difficulty': 3, 'url': '/mining/brain'}
+    ],
+    'daily': [
+        {'id': 'login_bonus', 'name': 'Daily Login', 'description': 'Claim your daily login bonus', 'url': '#'},
+        {'id': 'share_post', 'name': 'Share a Post', 'description': 'Share Grishinium on social media', 'url': 'https://twitter.com/intent/tweet?text=I%20am%20earning%20Grishinium%20tokens%20on%20the%20testnet!%20Join%20me%20at%20https://grishinium.org'},
+        {'id': 'read_whitepaper', 'name': 'Read Whitepaper', 'description': 'Read a section of the Grishinium whitepaper', 'url': 'https://grishinium.org/whitepaper.pdf'}
+    ],
+    'skills': [
+        {'id': 'blockchain_basics', 'name': 'Blockchain Basics Quiz', 'description': 'Test your knowledge of blockchain fundamentals', 'url': '/skills/blockchain-basics'},
+        {'id': 'code_challenge', 'name': 'Coding Challenge', 'description': 'Solve a simple blockchain-related coding problem', 'url': '/skills/coding-challenge'},
+        {'id': 'community_contribution', 'name': 'Community Contribution', 'description': 'Make a meaningful contribution to the Grishinium community', 'url': 'https://github.com/grishinium/community-projects'}
     ]
 }
 
@@ -520,6 +538,252 @@ def get_completed_tasks():
         logging.error(f"Error getting completed tasks: {e}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/mining/start', methods=['POST'])
+def start_mining():
+    """Начать майнинг (симуляция)"""
+    try:
+        data = request.get_json()
+        if not data or 'address' not in data or 'miningType' not in data:
+            return jsonify({'error': 'Address and miningType are required'}), 400
+        
+        address = data['address']
+        mining_type = data['miningType']
+        
+        # Проверяем тип майнинга
+        valid_mining_types = [task['id'] for task in AVAILABLE_TASKS.get('mining', [])]
+        if mining_type not in valid_mining_types:
+            return jsonify({'error': 'Invalid mining type'}), 400
+        
+        # Проверяем существование кошелька
+        wallet_path = os.path.join(WALLETS_DIR, f'{address}.json')
+        if not os.path.exists(wallet_path):
+            return jsonify({'error': 'Wallet not found'}), 404
+            
+        # Генерируем сложность для mining puzzle
+        difficulty = next((task['difficulty'] for task in AVAILABLE_TASKS['mining'] if task['id'] == mining_type), 1)
+        
+        # Генерируем случайную строку в качестве challenge
+        mining_challenge = ''.join(format(x, '02x') for x in os.urandom(16))
+        
+        # Сохраняем информацию о сессии майнинга
+        mining_sessions_file = os.path.join(WALLETS_DIR, f'{address}_mining_sessions.json')
+        mining_sessions = {}
+        if os.path.exists(mining_sessions_file):
+            with open(mining_sessions_file, 'r') as f:
+                mining_sessions = json.load(f)
+        
+        # Создаем новую сессию майнинга
+        session_id = ''.join(format(x, '02x') for x in os.urandom(8))
+        mining_sessions[session_id] = {
+            'type': mining_type,
+            'challenge': mining_challenge,
+            'difficulty': difficulty,
+            'start_time': time.time(),
+            'status': 'active',
+            'target': '0' * difficulty + 'f' * (16 - difficulty)  # Задаем цель для PoW
+        }
+        
+        with open(mining_sessions_file, 'w') as f:
+            json.dump(mining_sessions, f, indent=2)
+        
+        logging.info(f"Started mining session {session_id} for {address} with type {mining_type}")
+        return jsonify({
+            'session_id': session_id,
+            'challenge': mining_challenge,
+            'difficulty': difficulty,
+            'target': mining_sessions[session_id]['target']
+        })
+    except Exception as e:
+        logging.error(f"Error starting mining session: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/mining/submit', methods=['POST'])
+def submit_mining_result():
+    """Отправить результат майнинга"""
+    try:
+        data = request.get_json()
+        if not data or 'address' not in data or 'sessionId' not in data or 'nonce' not in data:
+            return jsonify({'error': 'Address, sessionId and nonce are required'}), 400
+        
+        address = data['address']
+        session_id = data['sessionId']
+        nonce = data['nonce']
+        
+        # Проверяем существование кошелька
+        wallet_path = os.path.join(WALLETS_DIR, f'{address}.json')
+        if not os.path.exists(wallet_path):
+            return jsonify({'error': 'Wallet not found'}), 404
+            
+        # Проверяем существование сессии майнинга
+        mining_sessions_file = os.path.join(WALLETS_DIR, f'{address}_mining_sessions.json')
+        if not os.path.exists(mining_sessions_file):
+            return jsonify({'error': 'No mining sessions found'}), 404
+            
+        with open(mining_sessions_file, 'r') as f:
+            mining_sessions = json.load(f)
+            
+        if session_id not in mining_sessions:
+            return jsonify({'error': 'Mining session not found'}), 404
+            
+        session = mining_sessions[session_id]
+        if session['status'] != 'active':
+            return jsonify({'error': 'Mining session is not active'}), 400
+            
+        # Получаем информацию о сессии
+        challenge = session['challenge']
+        target = session['target']
+        
+        # Проверяем результат майнинга (простая симуляция PoW)
+        import hashlib
+        result = hashlib.sha256(f"{challenge}{nonce}".encode()).hexdigest()
+        
+        if result < target:
+            # Результат подходит, награждаем пользователя
+            mining_type = session['type']
+            reward = TASK_REWARDS['mining']
+            difficulty_multiplier = session['difficulty']
+            final_reward = reward * difficulty_multiplier
+            
+            # Отправляем награду
+            blockchain.send_tokens(main_wallet.address, address, final_reward)
+            
+            # Помечаем сессию как завершенную
+            session['status'] = 'completed'
+            session['end_time'] = time.time()
+            session['reward'] = final_reward
+            session['result_hash'] = result
+            
+            with open(mining_sessions_file, 'w') as f:
+                json.dump(mining_sessions, f, indent=2)
+                
+            # Обновляем баланс кошелька
+            with open(wallet_path, 'r') as f:
+                wallet_data = json.load(f)
+                wallet_data['balance'] = blockchain.get_balance(address)
+                with open(wallet_path, 'w') as f:
+                    json.dump(wallet_data, f, indent=2)
+                    
+            logging.info(f"Mining session {session_id} completed for {address} with reward {final_reward} GRISH")
+            return jsonify({
+                'success': True,
+                'reward': final_reward,
+                'message': f'Mining successful! You earned {final_reward} GRISH',
+                'new_balance': wallet_data['balance']
+            })
+        else:
+            # Результат не подходит
+            logging.info(f"Failed mining attempt for session {session_id}: {result} >= {target}")
+            return jsonify({
+                'success': False,
+                'message': 'Mining failed. The result did not meet the target difficulty.'
+            }), 400
+    except Exception as e:
+        logging.error(f"Error submitting mining result: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/daily/check', methods=['GET'])
+def check_daily_tasks():
+    """Проверить статус ежедневных заданий"""
+    try:
+        address = request.args.get('address')
+        if not address:
+            return jsonify({'error': 'Address is required'}), 400
+            
+        # Получаем информацию о выполненных заданиях
+        completed_tasks_file = os.path.join(WALLETS_DIR, f'{address}_completed_tasks.json')
+        completed_tasks = {}
+        if os.path.exists(completed_tasks_file):
+            with open(completed_tasks_file, 'r') as f:
+                completed_tasks = json.load(f)
+                
+        # Проверяем, какие ежедневные задания выполнены сегодня
+        today = datetime.now().strftime('%Y-%m-%d')
+        daily_status = {}
+        
+        for task in AVAILABLE_TASKS['daily']:
+            task_key = f"daily_{task['id']}_{today}"
+            daily_status[task['id']] = task_key in completed_tasks
+            
+        return jsonify({
+            'date': today,
+            'tasks': daily_status
+        })
+    except Exception as e:
+        logging.error(f"Error checking daily tasks: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/skills/submit', methods=['POST'])
+def submit_skill_verification():
+    """Отправить результат проверки навыков"""
+    try:
+        data = request.get_json()
+        if not data or 'address' not in data or 'skillId' not in data or 'answer' not in data:
+            return jsonify({'error': 'Address, skillId and answer are required'}), 400
+            
+        address = data['address']
+        skill_id = data['skillId']
+        answer = data['answer']
+        
+        # Проверяем существование навыка
+        skill_exists = any(skill['id'] == skill_id for skill in AVAILABLE_TASKS['skills'])
+        if not skill_exists:
+            return jsonify({'error': 'Skill verification task not found'}), 404
+            
+        # Проверяем существование кошелька
+        wallet_path = os.path.join(WALLETS_DIR, f'{address}.json')
+        if not os.path.exists(wallet_path):
+            return jsonify({'error': 'Wallet not found'}), 404
+            
+        # Здесь должна быть логика проверки ответа на задание
+        # Для примера используем простую проверку:
+        is_correct = len(answer) > 10  # Просто проверяем, что ответ не пустой
+        
+        if is_correct:
+            # Отмечаем задание как выполненное
+            completed_tasks_file = os.path.join(WALLETS_DIR, f'{address}_completed_tasks.json')
+            completed_tasks = {}
+            if os.path.exists(completed_tasks_file):
+                with open(completed_tasks_file, 'r') as f:
+                    completed_tasks = json.load(f)
+                    
+            task_key = f"skills_{skill_id}"
+            if task_key in completed_tasks:
+                return jsonify({'error': 'Skill already verified'}), 400
+                
+            # Отправляем награду
+            reward = TASK_REWARDS['skills']
+            blockchain.send_tokens(main_wallet.address, address, reward)
+            
+            # Обновляем баланс кошелька
+            with open(wallet_path, 'r') as f:
+                wallet_data = json.load(f)
+                wallet_data['balance'] = blockchain.get_balance(address)
+                with open(wallet_path, 'w') as f:
+                    json.dump(wallet_data, f, indent=2)
+            
+            # Отмечаем задание как выполненное
+            completed_tasks[task_key] = {
+                'timestamp': time.time(),
+                'reward': reward
+            }
+            with open(completed_tasks_file, 'w') as f:
+                json.dump(completed_tasks, f, indent=2)
+                
+            logging.info(f"User {address} verified skill {skill_id} and received {reward} GRISH")
+            return jsonify({
+                'success': True,
+                'message': f'Skill verified! You earned {reward} GRISH',
+                'new_balance': wallet_data['balance']
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'message': 'Your answer was incorrect. Please try again.'
+            }), 400
+    except Exception as e:
+        logging.error(f"Error verifying skill: {e}")
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/api/blockchain/status', methods=['GET'])
 def get_blockchain_status():
     try:
@@ -539,7 +803,7 @@ def get_blockchain_status():
 if __name__ == '__main__':
     try:
         # Запускаем сервер на всех интерфейсах
-        socketio.run(app, host='0.0.0.0', port=5001, debug=True)
+        app.run(host='0.0.0.0', port=5001, debug=True)
     except Exception as e:
         logging.error(f"Error starting server: {str(e)}")
         raise 

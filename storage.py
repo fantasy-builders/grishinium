@@ -41,7 +41,7 @@ class BlockchainStorage:
         """Создает необходимые таблицы в базе данных."""
         # Таблица для блоков
         self.cursor.execute('''
-            CREATE TABLE IF NOT EXISTS blocks (
+                CREATE TABLE IF NOT EXISTS blocks (
                 hash TEXT PRIMARY KEY,
                 block_index INTEGER,
                 previous_hash TEXT,
@@ -49,34 +49,34 @@ class BlockchainStorage:
                 transactions TEXT,
                 validator TEXT,
                 signature TEXT
-            )
-        ''')
-        
+                )
+            ''')
+            
         # Таблица для транзакций
         self.cursor.execute('''
-            CREATE TABLE IF NOT EXISTS transactions (
+                CREATE TABLE IF NOT EXISTS transactions (
                 hash TEXT PRIMARY KEY,
                 block_hash TEXT,
                 sender TEXT,
                 recipient TEXT,
                 amount REAL,
                 timestamp REAL,
-                signature TEXT,
+                    signature TEXT,
                 type TEXT,
                 FOREIGN KEY (block_hash) REFERENCES blocks(hash)
-            )
-        ''')
-        
+                )
+            ''')
+            
         # Таблица для стейков
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS stakes (
-                address TEXT PRIMARY KEY,
+                    address TEXT PRIMARY KEY,
                 amount REAL,
                 timestamp REAL,
                 can_unstake INTEGER
-            )
-        ''')
-        
+                )
+            ''')
+            
         self.conn.commit()
         
     def save_state(self, blockchain: Blockchain) -> None:
@@ -128,7 +128,7 @@ class BlockchainStorage:
             self.cursor.execute('''
                 INSERT INTO stakes (address, amount, timestamp, can_unstake)
                 VALUES (?, ?, ?, ?)
-            ''', (
+        ''', (
                 address,
                 stake_info['amount'],
                 stake_info['timestamp'],
@@ -141,7 +141,7 @@ class BlockchainStorage:
     def load_state(self) -> Optional[Blockchain]:
         """
         Загружает состояние блокчейна.
-        
+            
         Returns:
             Optional[Blockchain]: Загруженный блокчейн или None, если нет сохраненного состояния
         """
@@ -200,4 +200,82 @@ class BlockchainStorage:
     def close(self) -> None:
         """Закрывает соединение с базой данных."""
         self.conn.close()
-        logger.debug("Соединение с базой данных закрыто") 
+        logger.debug("Соединение с базой данных закрыто")
+
+    def get_balance(self, address: str) -> float:
+        """
+        Получает баланс адреса.
+        
+        Args:
+            address: Адрес кошелька
+            
+        Returns:
+            float: Баланс адреса
+        """
+        # Получаем все транзакции отправленные с адреса
+        self.cursor.execute('''
+            SELECT SUM(amount) FROM transactions
+            WHERE sender = ?
+        ''', (address,))
+        sent = self.cursor.fetchone()[0] or 0
+        
+        # Получаем все транзакции полученные адресом
+        self.cursor.execute('''
+            SELECT SUM(amount) FROM transactions
+            WHERE recipient = ?
+        ''', (address,))
+        received = self.cursor.fetchone()[0] or 0
+        
+        # Баланс = полученные - отправленные
+        balance = received - sent
+        
+        return balance
+    
+    def get_staked_amount(self, address: str) -> float:
+        """
+        Получает сумму застейканных токенов для адреса.
+        
+        Args:
+            address: Адрес кошелька
+            
+        Returns:
+            float: Сумма в стейке или 0, если адрес не имеет стейка
+        """
+        self.cursor.execute('''
+            SELECT amount FROM stakes
+            WHERE address = ?
+        ''', (address,))
+        
+        result = self.cursor.fetchone()
+        if result:
+            return result[0]
+        return 0.0
+    
+    def add_pending_transaction(self, transaction: Dict) -> None:
+        """
+        Добавляет транзакцию в пул ожидающих.
+        
+        Args:
+            transaction: Данные транзакции
+        """
+        # Сохраняем в файл пула ожидающих транзакций
+        pending_file = os.path.join(self.data_dir, 'pending_transactions.json')
+        
+        # Загружаем существующие ожидающие транзакции
+        pending_transactions = []
+        if os.path.exists(pending_file):
+            try:
+                with open(pending_file, 'r') as f:
+                    pending_transactions = json.load(f)
+            except json.JSONDecodeError:
+                logger.error("Ошибка при чтении пула ожидающих транзакций")
+                pending_transactions = []
+        
+        # Добавляем новую транзакцию
+        pending_transactions.append(transaction)
+        
+        # Сохраняем обновленный пул транзакций
+        with open(pending_file, 'w') as f:
+            json.dump(pending_transactions, f, indent=2)
+            
+        logger.debug(f"Транзакция добавлена в пул ожидающих: {transaction.get('hash', '')}") 

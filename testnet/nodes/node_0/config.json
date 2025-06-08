@@ -1,0 +1,6 @@
+{
+    "data_dir": "/Users/aleksandr/Desktop/Grishinium Blockchain/Blockchain/testnet/nodes/node_0",
+    "port": 6000,
+    "min_stake_amount": 10,
+    "stake_reward_rate": 0.1
+}

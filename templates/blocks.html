@@ -1,28 +1,92 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row mb-4">
+    <div class="col-12 mb-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <h2 class="m-0"><i class="fas fa-cubes me-3" style="color: var(--primary-color);"></i>Blockchain Explorer</h2>
+            <div>
+                <span class="badge badge-primary me-2" id="current-blocks-count">0 Blocks</span>
+                <span class="badge badge-secondary" id="current-tx-count">0 Transactions</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body p-4 text-center">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="blockchain-stat-icon mb-3">
+                        <i class="fas fa-cube fa-2x" style="color: var(--primary-color);"></i>
+                    </div>
+                    <h6 class="mb-1" style="color: var(--text-secondary);">Latest Block</h6>
+                    <h3 class="m-0" id="latest-block-height">-</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body p-4 text-center">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="blockchain-stat-icon mb-3">
+                        <i class="fas fa-exchange-alt fa-2x" style="color: var(--primary-color);"></i>
+                    </div>
+                    <h6 class="mb-1" style="color: var(--text-secondary);">Total Transactions</h6>
+                    <h3 class="m-0" id="total-transactions">-</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body p-4 text-center">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="blockchain-stat-icon mb-3">
+                        <i class="fas fa-user-shield fa-2x" style="color: var(--primary-color);"></i>
+                    </div>
+                    <h6 class="mb-1" style="color: var(--text-secondary);">Active Validators</h6>
+                    <h3 class="m-0" id="active-validators">-</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h5 class="card-title mb-0"><i class="fas fa-cubes me-2"></i>Blockchain Explorer</h5>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="m-0"><i class="fas fa-th-list me-2"></i>Blockchain History</h5>
+                <div class="form-check form-switch mt-1">
+                    <input class="form-check-input" type="checkbox" id="auto-refresh" checked>
+                    <label class="form-check-label" for="auto-refresh">Auto Refresh</label>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table mb-0">
                         <thead>
                             <tr>
-                                <th>Height</th>
-                                <th>Hash</th>
-                                <th>Previous Hash</th>
-                                <th>Timestamp</th>
-                                <th>Transactions</th>
-                                <th>Actions</th>
+                                <th style="width: 8%">Height</th>
+                                <th style="width: 22%">Hash</th>
+                                <th style="width: 22%">Previous Hash</th>
+                                <th style="width: 15%">Timestamp</th>
+                                <th style="width: 10%">Validator</th>
+                                <th style="width: 10%">Transactions</th>
+                                <th style="width: 13%">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="blocks-list">
                             <tr>
-                                <td colspan="6" class="text-center">Loading blocks...</td>
+                                <td colspan="7" class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-3 text-secondary">Loading blockchain data...</p>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -34,16 +98,42 @@
 
 <!-- Modal для просмотра деталей блока -->
 <div class="modal fade" id="blockModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Block Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title"><i class="fas fa-cube me-2" style="color: var(--primary-color);"></i>Block Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body">
-                <div id="block-details">
-                    Loading block details...
+            <div class="modal-body p-0">
+                <div id="block-details" class="p-4">
+                    <div class="d-flex justify-content-center align-items-center py-5">
+                        <div class="spinner-border text-primary me-3" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="m-0">Loading block details...</p>
+                    </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Анимация для нового блока -->
+<div id="new-block-alert" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11; display: none;">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header" style="background-color: var(--primary-color); color: #000;">
+            <i class="fas fa-cube me-2"></i>
+            <strong class="me-auto">New Block</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" style="background-color: var(--bg-card);">
+            A new block has been added to the blockchain!
+            <div class="mt-2">
+                <button type="button" class="btn btn-sm btn-primary" id="view-new-block">View Block</button>
             </div>
         </div>
     </div>
@@ -53,96 +143,263 @@
 {% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    let lastBlockHeight = -1;
+    let newBlockData = null;
+    let autoRefresh = true;
+    let totalTxCount = 0;
+    let blocks = [];
+    
+    // Элементы UI
+    const blocksList = document.getElementById('blocks-list');
+    const latestBlockHeight = document.getElementById('latest-block-height');
+    const totalTransactions = document.getElementById('total-transactions');
+    const currentBlocksCount = document.getElementById('current-blocks-count');
+    const currentTxCount = document.getElementById('current-tx-count');
+    const autoRefreshToggle = document.getElementById('auto-refresh');
+    const newBlockAlert = document.getElementById('new-block-alert');
+    const viewNewBlockBtn = document.getElementById('view-new-block');
+    const activeValidators = document.getElementById('active-validators');
+    
+    // Переключатель автообновления
+    autoRefreshToggle.addEventListener('change', function() {
+        autoRefresh = this.checked;
+    });
+    
+    // Кнопка просмотра нового блока
+    viewNewBlockBtn.addEventListener('click', function() {
+        if (newBlockData) {
+            showBlockDetails(newBlockData);
+            const toast = bootstrap.Toast.getInstance(document.querySelector('.toast'));
+            toast.hide();
+        }
+    });
+    
     // Загрузка списка блоков
     function loadBlocks() {
+        if (!autoRefresh) return;
+        
         fetch('/api/chain')
             .then(response => response.json())
             .then(data => {
-                const tbody = document.getElementById('blocks-list');
-                tbody.innerHTML = '';
+                blocks = data.current_node.blocks;
                 
-                data.current_node.blocks.forEach(block => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${block.index}</td>
-                        <td><code>${block.hash}</code></td>
-                        <td><code>${block.previous_hash}</code></td>
-                        <td>${new Date(block.timestamp * 1000).toLocaleString()}</td>
-                        <td>${block.transactions.length}</td>
-                        <td>
-                            <button class="btn btn-sm btn-outline-primary view-block" data-block='${JSON.stringify(block)}'>
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </td>
-                    `;
-                    tbody.appendChild(row);
+                // Обновляем статистику
+                const currentBlockHeight = blocks.length > 0 ? blocks[0].index : 0;
+                latestBlockHeight.textContent = currentBlockHeight;
+                currentBlocksCount.textContent = `${blocks.length} Blocks`;
+                
+                // Подсчет всех транзакций
+                totalTxCount = blocks.reduce((sum, block) => sum + block.transactions.length, 0);
+                totalTransactions.textContent = totalTxCount;
+                currentTxCount.textContent = `${totalTxCount} Transactions`;
+                
+                // Подсчет активных валидаторов
+                const validators = new Set();
+                blocks.forEach(block => {
+                    if (block.validator) {
+                        validators.add(block.validator);
+                    }
                 });
+                activeValidators.textContent = validators.size;
+                
+                // Проверяем, появился ли новый блок
+                if (lastBlockHeight !== -1 && currentBlockHeight > lastBlockHeight) {
+                    // Показываем уведомление о новом блоке
+                    newBlockData = blocks[0];
+                    const toast = new bootstrap.Toast(document.querySelector('.toast'));
+                    toast.show();
+                }
+                
+                lastBlockHeight = currentBlockHeight;
+                
+                // Обновляем таблицу
+                updateBlocksTable(blocks);
             })
             .catch(error => console.error('Error loading blocks:', error));
     }
+    
+    // Обновление таблицы блоков
+    function updateBlocksTable(blocks) {
+        blocksList.innerHTML = '';
+        
+        if (blocks.length === 0) {
+            blocksList.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center py-5">
+                        <p class="mb-0">No blocks found in the blockchain.</p>
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        blocks.forEach(block => {
+            const row = document.createElement('tr');
+            
+            // Сокращаем хеши для лучшего отображения
+            const shortHash = `${block.hash.substring(0, 8)}...${block.hash.substring(block.hash.length - 8)}`;
+            const shortPrevHash = `${block.previous_hash.substring(0, 8)}...${block.previous_hash.substring(block.previous_hash.length - 8)}`;
+            const shortValidator = block.validator ? `${block.validator.substring(0, 6)}...${block.validator.substring(block.validator.length - 4)}` : 'Genesis';
+            
+            row.innerHTML = `
+                <td>
+                    <span class="badge badge-primary">${block.index}</span>
+                </td>
+                <td>
+                    <code title="${block.hash}">${shortHash}</code>
+                </td>
+                <td>
+                    <code title="${block.previous_hash}">${shortPrevHash}</code>
+                </td>
+                <td>${formatTimestamp(block.timestamp)}</td>
+                <td>
+                    <span title="${block.validator || 'Genesis Block'}">${shortValidator}</span>
+                </td>
+                <td>
+                    <span class="badge bg-secondary">${block.transactions.length}</span>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary view-block" data-block='${JSON.stringify(block)}'>
+                        <i class="fas fa-eye me-1"></i>Details
+                    </button>
+                </td>
+            `;
+            blocksList.appendChild(row);
+        });
+    }
+    
+    // Форматирование временной метки
+    function formatTimestamp(timestamp) {
+        const date = new Date(timestamp * 1000);
+        return date.toLocaleString('en-US', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+    }
+    
+    // Сокращение адреса
+    function shortenAddress(address) {
+        if (!address) return 'N/A';
+        return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
+    }
 
     // Просмотр деталей блока
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.view-block')) {
-            const block = JSON.parse(e.target.closest('.view-block').dataset.block);
-            const modal = new bootstrap.Modal(document.getElementById('blockModal'));
-            
-            const details = document.getElementById('block-details');
-            details.innerHTML = `
-                <div class="mb-3">
-                    <h6>Block Information</h6>
-                    <table class="table table-sm">
-                        <tr>
-                            <th>Height:</th>
-                            <td>${block.index}</td>
-                        </tr>
-                        <tr>
-                            <th>Hash:</th>
-                            <td><code>${block.hash}</code></td>
-                        </tr>
-                        <tr>
-                            <th>Previous Hash:</th>
-                            <td><code>${block.previous_hash}</code></td>
-                        </tr>
-                        <tr>
-                            <th>Timestamp:</th>
-                            <td>${new Date(block.timestamp * 1000).toLocaleString()}</td>
-                        </tr>
-                        <tr>
-                            <th>Nonce:</th>
-                            <td>${block.nonce}</td>
-                        </tr>
-                    </table>
-                </div>
-                
-                <div>
-                    <h6>Transactions (${block.transactions.length})</h6>
-                    <div class="table-responsive">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Amount</th>
-                                    <th>Timestamp</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${block.transactions.map(tx => `
-                                    <tr>
-                                        <td><code>${tx.from}</code></td>
-                                        <td><code>${tx.to}</code></td>
-                                        <td>${tx.amount} GRISH</td>
-                                        <td>${new Date(tx.timestamp * 1000).toLocaleString()}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
+    function showBlockDetails(block) {
+        const modal = new bootstrap.Modal(document.getElementById('blockModal'));
+        const details = document.getElementById('block-details');
+        
+        // Подсчитываем общую сумму транзакций
+        let totalAmount = 0;
+        block.transactions.forEach(tx => {
+            totalAmount += parseFloat(tx.amount);
+        });
+        
+        details.innerHTML = `
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5 class="mb-3">Block Information</h5>
+                    <div class="card" style="background-color: rgba(0, 0, 0, 0.2);">
+                        <div class="card-body p-3">
+                            <div class="mb-2">
+                                <span class="d-block text-secondary fs-sm">Height</span>
+                                <span class="fw-bold">${block.index}</span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="d-block text-secondary fs-sm">Timestamp</span>
+                                <span>${formatTimestamp(block.timestamp)}</span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="d-block text-secondary fs-sm">Validated By</span>
+                                <span title="${block.validator || 'Genesis Block'}">${block.validator ? shortenAddress(block.validator) : 'Genesis Block'}</span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="d-block text-secondary fs-sm">Transactions</span>
+                                <span class="badge bg-secondary">${block.transactions.length}</span>
+                            </div>
+                            <div>
+                                <span class="d-block text-secondary fs-sm">Total Value</span>
+                                <span>${totalAmount.toFixed(2)} GRISH</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            `;
+                
+                <div class="col-md-6 mb-4">
+                    <h5 class="mb-3">Block Hash</h5>
+                    <div class="card" style="background-color: rgba(0, 0, 0, 0.2);">
+                        <div class="card-body p-3">
+                            <div class="mb-3">
+                                <span class="d-block text-secondary fs-sm">Block Hash</span>
+                                <span style="word-break: break-all;"><code>${block.hash}</code></span>
+                            </div>
+                            <div>
+                                <span class="d-block text-secondary fs-sm">Previous Block Hash</span>
+                                <span style="word-break: break-all;"><code>${block.previous_hash}</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            modal.show();
+            <div class="mb-2">
+                <h5 class="mb-3">Transactions (${block.transactions.length})</h5>
+            </div>
+            
+            ${block.transactions.length > 0 ? `
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Amount</th>
+                                <th>Type</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${block.transactions.map(tx => `
+                                <tr>
+                                    <td>
+                                        <span title="${tx.from}">${shortenAddress(tx.from)}</span>
+                                    </td>
+                                    <td>
+                                        <span title="${tx.to}">${shortenAddress(tx.to)}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">${tx.amount} GRISH</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-${tx.type === 'stake' ? 'info' : tx.type === 'unstake' ? 'warning' : 'secondary'}">
+                                            ${tx.type || 'transfer'}
+                                        </span>
+                                    </td>
+                                    <td>${formatTimestamp(tx.timestamp)}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            ` : `
+                <div class="alert alert-secondary">
+                    No transactions in this block.
+                </div>
+            `}
+        `;
+        
+        modal.show();
+    }
+
+    // Обработчик для просмотра деталей блока
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.view-block')) {
+            const button = e.target.closest('.view-block');
+            const block = JSON.parse(button.dataset.block);
+            showBlockDetails(block);
         }
     });
 
@@ -151,4 +408,48 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(loadBlocks, 5000);
 });
 </script>
+
+<style>
+.blockchain-stat-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(0, 255, 178, 0.1), rgba(0, 255, 178, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 178, 0.2);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 255, 178, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 178, 0);
+    }
+}
+
+.toast {
+    background-color: transparent;
+    border: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.fs-sm {
+    font-size: 0.85rem;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+</style>
 {% endblock %} 

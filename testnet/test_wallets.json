@@ -1,0 +1,37 @@
+[
+    {
+        "index": 0,
+        "address": "GRS_31XXLg6iqrGp1wQv7UUmP9HRREjC",
+        "seed_phrase": "asthma arena allow admit apple average awkward announce atom awesome autumn artwork",
+        "password": "testnet_0",
+        "wallet_name": "testnet_wallet_0"
+    },
+    {
+        "index": 1,
+        "address": "GRS_2T26X2UASSutJZ85WBBWV8QhfapT",
+        "seed_phrase": "audit allow atom age area aunt alcohol anxiety attitude album addict anchor",
+        "password": "testnet_1",
+        "wallet_name": "testnet_wallet_1"
+    },
+    {
+        "index": 2,
+        "address": "GRS_3fDjN4iDCX6GAwR1qSGuSYzzaM6p",
+        "seed_phrase": "assume around awake alley allow again armed any agent advice alcohol ability",
+        "password": "testnet_2",
+        "wallet_name": "testnet_wallet_2"
+    },
+    {
+        "index": 3,
+        "address": "GRS_3WVVfe1w2E7Kj8EVcr7aEbcUumaZ",
+        "seed_phrase": "address ahead always appear allow acid arena away apple absorb angry access",
+        "password": "testnet_3",
+        "wallet_name": "testnet_wallet_3"
+    },
+    {
+        "index": 4,
+        "address": "GRS_3sbRRAUHrbdrHLFqmvszn1rSP2iA",
+        "seed_phrase": "arm access alley adapt act amazing absurd aspect ankle artist artist argue",
+        "password": "testnet_4",
+        "wallet_name": "testnet_wallet_4"
+    }
+]

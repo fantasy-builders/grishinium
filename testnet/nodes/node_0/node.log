@@ -1,0 +1,906 @@
+/Users/aleksandr/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2025-03-31 18:40:55,690 - GrishiniumCrypto - INFO - Сгенерирована новая пара ключей RSA
+2025-03-31 18:40:55,698 - GrishiniumStorage - INFO - База данных блокчейна инициализирована
+2025-03-31 18:40:55,698 - GrishiniumStorage - INFO - Хранилище блокчейна инициализировано в /Users/aleksandr/Desktop/Grishinium Blockchain/Blockchain/testnet/nodes/node_0
+2025-03-31 18:40:55,702 - GrishiniumNetwork - INFO - Сетевой модуль инициализирован, HTTP сервер запущен на порту 6000
+2025-03-31 18:40:55,702 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:40:55,702 - GrishiniumNetwork - INFO - Фоновая синхронизация запущена
+2025-03-31 18:40:55,702 - GrishiniumMain - INFO - Узел Grishinium инициализирован с адресом GRS_1Cmj9zz8HapUQzKmxVDAEFvJ2BHYAXgeMj
+2025-03-31 18:40:55,702 - GrishiniumMain - INFO - Узел работает в тестовой сети
+2025-03-31 18:41:55,703 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:42:55,711 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:43:55,716 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:44:55,722 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:45:55,727 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:46:55,728 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:47:55,732 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:48:55,738 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 18:49:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:18] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:22] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:23] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:27] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:28] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:32] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:33] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:37] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:38] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:42] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:43] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:47] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:48] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:52] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:53] "GET /blocks HTTP/1.1" 200 -
+2025-03-31 18:49:55,741 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 18:49:57] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:49:58] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:02] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:03] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:07] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:08] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:12] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:13] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:18] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:22] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:23] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:27] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:28] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:32] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:33] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:37] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:38] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:42] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:43] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:47] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:48] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:52] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:53] "GET /blocks HTTP/1.1" 200 -
+2025-03-31 18:50:55,746 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 18:50:57] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:50:58] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:02] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:03] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:07] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:08] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:12] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:13] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:18] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:22] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:23] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:27] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:28] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:32] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:33] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:37] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:38] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:42] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:43] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:47] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:48] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:52] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:53] "GET /blocks HTTP/1.1" 200 -
+2025-03-31 18:51:55,752 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 18:51:57] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:51:58] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:02] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:03] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:07] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:08] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:12] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:13] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:18] "GET /blocks HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:22] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 18:52:23] "GET /blocks HTTP/1.1" 200 -
+2025-03-31 18:52:55,755 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:53:55,759 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:54:55,764 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:55:55,769 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:56:55,772 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:57:55,776 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:58:55,778 - GrishiniumNetwork - INFO - Our chain is authoritative
+2025-03-31 18:59:55,780 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:00:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:00:55,784 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:00:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:01:53] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:01:55,794 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:01:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:02:53] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:02:55,802 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:02:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:39] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:44] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:49] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:03:54] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:03:55,804 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:03:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:09] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:19] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:24] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:04:53] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:04:55,810 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:04:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:54] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:05:55,815 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:05:55] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:05:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:09] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:19] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:24] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:29] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:34] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:39] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:44] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:49] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:53] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:54] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:06:55,829 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:06:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:06:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:07:53] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:07:55,834 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:07:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:08:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:08:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:08:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:08:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:08:18] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:08:55,838 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:09:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:09:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:09:55,840 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:10:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:10:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:10:55,847 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:11:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:11:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:11:55,851 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:12:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:12:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:12:55,853 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:13:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:13:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:13:55,858 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:14:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:27] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:14:53] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:14:55,865 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:14:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:09] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:19] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:25] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:29] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:34] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:39] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:44] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:49] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:15:54] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:15:55,867 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:16:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:16:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:16:55,872 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:17:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:27] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:17:53] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:17:55,874 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:17:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:18:54] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:18:55,876 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:18:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:09] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:19] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:24] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:29] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:34] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:39] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:44] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:19:49] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:19:55,942 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:20:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:20:14] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:20:55,944 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:21:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:21:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:21:55,952 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:22:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:22:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:22:55,955 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:23:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:23:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:23:55,962 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:24:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:24:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:24:55,969 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:25:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:25:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:25:47] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:25:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:25:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:25:53] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:25:54] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:25:55,974 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:25:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:25:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:09] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:19] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:24] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:29] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:34] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:39] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:44] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:26:48] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:26:55,977 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:27:13] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:27:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:28:31,896 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:28:40] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:28:40] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:29:57,721 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:31:07] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:31:08] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:32:03,288 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:32:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:32:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:33:03,294 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:33:07] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:33:07] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:34:03,298 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:34:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:34:07] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:35:03,302 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:35:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:35:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:36:03,308 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:36:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:36:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:37:03,313 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:37:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:37:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:38:03,318 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:38:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:38:07] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:39:03,322 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:39:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:39:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:40:03,325 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:40:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:40:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:41:03,327 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:41:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:41:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:42:03,332 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:42:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:42:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:43:03,334 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:43:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:43:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:44:03,335 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:44:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:44:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:45:03,339 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:45:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:45:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:46:03,346 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:46:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:46:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:47:03,348 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:47:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:47:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:48:03,353 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:48:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:48:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:49:03,359 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:49:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:49:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:50:03,364 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:50:07] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:50:07] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:51:03,371 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:51:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:51:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:52:03,378 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:52:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:52:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:53:03,382 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:53:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:53:07] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:54:03,398 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:54:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:54:07] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:55:03,304 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:55:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:55:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:56:03,305 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:56:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:56:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:57:03,306 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:57:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:57:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:58:03,311 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:58:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:58:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 19:59:03,315 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 19:59:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 19:59:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:00:03,319 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:00:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:00:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:01:03,323 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:01:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:01:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:02:03,326 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:02:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:02:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:03:03,331 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:03:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:03:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:04:03,335 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:04:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:04:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:05:03,340 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:05:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:05:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:06:03,340 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:06:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:06:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:07:03,341 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:07:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:07:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:08:03,341 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:08:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:08:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:09:03,342 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:09:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:09:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:10:03,347 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:10:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:10:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:11:03,347 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:11:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:11:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:12:03,351 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:12:06] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:12:06] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:13:28,836 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:13:32] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:13:32] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:29:24,800 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:29:28] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:29:29] "GET /ping HTTP/1.1" 200 -
+2025-03-31 20:45:20,512 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 20:45:24] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 20:45:24] "GET /ping HTTP/1.1" 200 -
+2025-03-31 21:01:17,023 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 21:01:20] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 21:01:20] "GET /ping HTTP/1.1" 200 -
+2025-03-31 21:17:12,803 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 21:17:16] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 21:17:16] "GET /ping HTTP/1.1" 200 -
+2025-03-31 21:31:09,144 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 21:31:12] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 21:31:13] "GET /ping HTTP/1.1" 200 -
+2025-03-31 21:47:05,028 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 21:47:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 21:47:08] "GET /ping HTTP/1.1" 200 -
+2025-03-31 21:48:14,106 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 21:48:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 21:48:17] "GET /ping HTTP/1.1" 200 -
+2025-03-31 22:04:54,153 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 22:04:57] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 22:04:57] "GET /ping HTTP/1.1" 200 -
+2025-03-31 22:05:54,442 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 22:05:57] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 22:05:58] "GET /ping HTTP/1.1" 200 -
+2025-03-31 22:14:07,971 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 22:14:11] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 22:14:11] "GET /ping HTTP/1.1" 200 -
+2025-03-31 22:33:00,852 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 22:33:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 22:33:04] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:14:21,583 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:14:23] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:14:23] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:31:04,120 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:31:05] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:31:05] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:44:58,305 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:44:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:45:00] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:45:58,311 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:45:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:45:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:46:58,321 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:46:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:46:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:47:58,328 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:47:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:47:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:48:58,333 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:48:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:48:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:49:58,342 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:49:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:49:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:50:58,343 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:50:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:50:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:51:58,350 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:51:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:51:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:52:58,351 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:52:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:52:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:53:58,353 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:53:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:53:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:54:58,357 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:54:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:54:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:55:58,361 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:55:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:55:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:56:58,362 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:56:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:56:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:57:58,370 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:57:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:57:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:58:58,372 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:58:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:58:59] "GET /ping HTTP/1.1" 200 -
+2025-03-31 23:59:58,379 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [31/Mar/2025 23:59:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2025 23:59:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:00:58,391 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:00:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:00:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:01:58,395 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:01:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:01:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:02:58,398 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:02:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:02:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:03:58,400 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:03:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:03:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:04:58,405 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:04:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:04:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:05:58,411 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:05:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:05:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:06:58,422 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:06:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:06:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:07:58,425 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:07:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:07:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:08:58,425 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:08:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:08:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:09:58,427 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:09:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:09:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:10:58,437 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:10:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:10:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:11:58,445 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:11:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:11:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:12:58,447 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:12:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:12:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:13:58,454 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:13:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:13:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:14:58,461 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:14:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:14:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:15:58,462 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:15:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:15:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:16:58,465 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:16:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:16:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:17:58,466 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:17:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:17:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:18:58,467 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:18:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:18:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:19:58,468 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:19:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:19:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:20:58,469 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:20:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:20:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:21:58,471 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:21:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:21:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:22:58,480 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:22:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:22:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:23:58,482 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:23:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:23:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:24:58,485 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:24:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:24:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:25:58,488 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:25:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:25:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:26:58,493 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:26:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:26:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:27:58,496 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:27:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:27:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:28:58,500 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:28:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:28:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:29:58,509 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:29:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:29:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:30:58,511 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:30:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:30:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:31:58,518 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:31:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:31:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:32:58,525 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:32:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:32:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:33:58,527 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:33:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:33:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:34:58,537 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:34:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:34:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:35:58,545 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:35:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:35:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:36:58,553 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:36:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:36:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:37:58,554 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:37:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:37:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:38:58,558 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:38:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:38:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:39:58,559 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:39:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:39:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:40:58,565 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:40:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:40:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:41:58,574 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:41:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:41:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:42:58,574 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:42:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:42:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:43:58,579 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:43:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:43:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:44:58,589 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:44:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:44:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:45:58,596 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:45:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:45:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:46:58,597 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:46:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:46:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:47:58,603 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:47:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:47:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 00:48:58,605 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 00:48:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 00:48:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:06:39,778 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:06:40] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:06:41] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:07:39,782 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:07:40] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:07:40] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:08:39,782 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:08:40] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:08:40] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:09:39,791 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:09:40] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:09:40] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:24:13,452 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:24:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:24:14] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:41:40,072 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:41:41] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:41:41] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:42:40,087 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:42:41] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:42:41] "GET /ping HTTP/1.1" 200 -
+2025-04-01 01:58:44,479 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 01:58:45] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 01:58:45] "GET /ping HTTP/1.1" 200 -
+2025-04-01 02:06:37,804 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 02:06:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 02:06:38] "GET /ping HTTP/1.1" 200 -
+2025-04-01 02:24:03,480 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 02:24:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 02:24:04] "GET /ping HTTP/1.1" 200 -
+2025-04-01 02:40:24,271 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 02:40:25] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 02:40:25] "GET /ping HTTP/1.1" 200 -
+2025-04-01 02:55:32,065 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 02:55:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 02:55:33] "GET /ping HTTP/1.1" 200 -
+2025-04-01 03:12:41,900 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 03:12:42] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 03:12:43] "GET /ping HTTP/1.1" 200 -
+2025-04-01 03:28:44,531 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 03:28:45] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 03:28:45] "GET /ping HTTP/1.1" 200 -
+2025-04-01 03:53:50,334 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 03:53:51] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 03:53:51] "GET /ping HTTP/1.1" 200 -
+2025-04-01 04:09:47,329 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 04:09:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 04:09:48] "GET /ping HTTP/1.1" 200 -
+2025-04-01 04:12:11,111 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 04:12:12] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 04:12:12] "GET /ping HTTP/1.1" 200 -
+2025-04-01 04:31:01,726 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 04:31:02] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 04:31:02] "GET /ping HTTP/1.1" 200 -
+2025-04-01 04:46:58,453 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 04:46:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 04:46:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 05:04:39,178 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 05:04:40] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 05:04:40] "GET /ping HTTP/1.1" 200 -
+2025-04-01 05:37:58,590 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 05:37:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 05:37:59] "GET /ping HTTP/1.1" 200 -
+2025-04-01 05:56:02,361 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 05:56:03] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 05:56:03] "GET /ping HTTP/1.1" 200 -
+2025-04-01 06:12:07,072 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 06:12:08] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 06:12:08] "GET /ping HTTP/1.1" 200 -
+2025-04-01 06:30:49,312 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 06:30:50] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 06:30:50] "GET /ping HTTP/1.1" 200 -
+2025-04-01 06:46:48,057 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 06:46:49] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 06:46:49] "GET /ping HTTP/1.1" 200 -
+2025-04-01 07:04:48,735 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 07:04:49] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 07:04:49] "GET /ping HTTP/1.1" 200 -
+2025-04-01 07:29:09,230 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 07:29:10] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 07:29:10] "GET /ping HTTP/1.1" 200 -
+2025-04-01 07:30:47,503 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 07:30:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 07:30:48] "GET /ping HTTP/1.1" 200 -
+2025-04-01 07:32:07,045 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 07:32:07] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 07:32:08] "GET /ping HTTP/1.1" 200 -
+2025-04-01 07:48:17,415 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 07:48:18] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 07:48:18] "GET /ping HTTP/1.1" 200 -
+2025-04-01 07:58:24,103 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 07:58:24] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 07:58:25] "GET /ping HTTP/1.1" 200 -
+2025-04-01 08:09:23,153 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 08:13:51] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 08:13:52] "GET /ping HTTP/1.1" 200 -
+2025-04-01 08:14:49,861 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 08:14:50] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 08:14:50] "GET /ping HTTP/1.1" 200 -
+2025-04-01 10:16:02,137 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 10:16:02] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 10:16:02] "GET /ping HTTP/1.1" 200 -
+2025-04-01 11:36:25,663 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 11:36:26] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 11:36:26] "GET /ping HTTP/1.1" 200 -
+2025-04-01 12:19:13,964 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 12:19:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 12:19:14] "GET /ping HTTP/1.1" 200 -
+2025-04-01 12:25:33,336 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 12:25:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 12:25:34] "GET /ping HTTP/1.1" 200 -
+2025-04-01 13:24:16,570 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 13:24:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 13:24:17] "GET /ping HTTP/1.1" 200 -
+2025-04-01 13:25:16,574 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 13:25:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 13:25:17] "GET /ping HTTP/1.1" 200 -
+2025-04-01 13:26:16,578 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 13:26:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 13:26:17] "GET /ping HTTP/1.1" 200 -
+2025-04-01 13:27:16,583 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 13:27:17] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 13:27:17] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:14:58,296 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:14:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:14:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:15:32] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:15:33] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:15:38] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:15:43] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:15:48] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:15:54] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:15:58,296 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:15:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:15:59] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:04] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:09] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:14] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:19] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:24] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:29] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:34] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:39] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:44] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:16:58,298 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:16:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:16:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:17:58,301 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:17:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:17:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:18:58,302 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:18:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:18:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:19:58,304 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:19:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:19:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:20:58,304 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:20:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:20:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:21:58,306 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:21:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:21:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:22:58,308 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:22:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:22:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:23:58,309 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:23:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:23:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:24:58,313 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:24:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:24:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:25:58,311 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:25:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:25:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:26:58,314 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:26:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:26:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:27:58,317 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:27:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:27:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:28:58,320 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:28:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:28:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:29:58,323 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:29:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:29:58] "GET /ping HTTP/1.1" 200 -
+2025-04-01 15:30:58,326 - GrishiniumNetwork - INFO - Our chain is authoritative
+127.0.0.1 - - [01/Apr/2025 15:30:58] "GET /ping HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2025 15:30:58] "GET /ping HTTP/1.1" 200 -
