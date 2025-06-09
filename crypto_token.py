@@ -222,7 +222,7 @@ class TokenLedger:
             self.balances[sender] = sender_balance - amount - fee
             self.balances[recipient] = self.balances.get(recipient, 0) + amount
             
-            # Комиссия идет майнеру/валидатору (будет обработано отдельно)
+            # Комиссия идет валидатору (будет обработано отдельно)
             
         elif tx_type == TokenTransactionType.STAKE:
             # Стейкинг токенов

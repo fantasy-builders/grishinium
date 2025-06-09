@@ -201,7 +201,7 @@ class BlockchainStorage:
         """Закрывает соединение с базой данных."""
         self.conn.close()
         logger.debug("Соединение с базой данных закрыто")
-
+    
     def get_balance(self, address: str) -> float:
         """
         Получает баланс адреса.

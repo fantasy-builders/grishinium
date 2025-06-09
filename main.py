@@ -117,12 +117,12 @@ class GrishiniumNode:
             "from": self.address,
             "to": "staking_pool",
             "amount": amount,
-            "timestamp": time.time(),
+                "timestamp": time.time(),
             "type": "stake"
         }
         
         # Добавляем транзакцию в новый блок
-        new_block = Block(
+            new_block = Block(
             index=len(self.blockchain.chain),
             previous_hash=self.blockchain.get_latest_block().hash,
             timestamp=time.time(),
@@ -243,7 +243,7 @@ def main():
     signal.signal(signal.SIGTERM, signal_handler)
     
     try:
-        node.start() 
+    node.start() 
     except Exception as e:
         logger.error(f"Критическая ошибка: {e}")
         node.stop()

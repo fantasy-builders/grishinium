@@ -361,7 +361,7 @@ def verify_block(block: Dict[str, Any], previous_block: Dict[str, Any], difficul
 
 def add_uncle_blocks(blockchain: List[Dict[str, Any]], orphan_blocks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
-    Добавляет uncle-блоки к блокчейну для компенсации валидных майнеров и защиты от майнинговых пулов.
+    Добавляет uncle-блоки к блокчейну для компенсации валидных валидаторов и защиты от стейкинговых пулов.
     
     Args:
         blockchain: Текущий блокчейн
@@ -390,7 +390,7 @@ def add_uncle_blocks(blockchain: List[Dict[str, Any]], orphan_blocks: List[Dict[
             uncle_block = {
                 'hash': orphan['hash'],
                 'height': orphan['height'],
-                'miner': orphan.get('miner', 'unknown'),
+                'validator': orphan.get('validator', 'unknown'),
                 'timestamp': orphan['timestamp']
             }
             
@@ -414,8 +414,8 @@ def hybrid_consensus_score(block: Dict[str, Any], stake_data: Dict[str, float]) 
     Returns:
         Общий рейтинг блока
     """
-    # Получаем адрес майнера из блока
-    miner_address = block.get('miner', '')
+    # Получаем адрес валидатора из блока
+    validator_address = block.get('validator', '')
     
     # PoW компонент - обратно пропорционален хешу блока (меньше хеш - лучше)
     # Преобразуем хеш блока в число и нормализуем
@@ -425,13 +425,13 @@ def hybrid_consensus_score(block: Dict[str, Any], stake_data: Dict[str, float]) 
         max_hash = int('f' * len(block['hash']), 16)
         pow_component = 1 - (hash_int / max_hash)
     
-    # PoS компонент - пропорционален стейку майнера
+    # PoS компонент - пропорционален стейку валидатора
     pos_component = 0.0
-    if miner_address in stake_data:
-        miner_stake = stake_data[miner_address]
+    if validator_address in stake_data:
+        validator_stake = stake_data[validator_address]
         # Нормализуем стейк относительно максимального
         total_stake = sum(stake_data.values())
-        pos_component = miner_stake / max(1, total_stake)
+        pos_component = validator_stake / max(1, total_stake)
     
     # Комбинируем компоненты с весовыми коэффициентами
     combined_score = (1 - STAKE_WEIGHT_FACTOR) * pow_component + STAKE_WEIGHT_FACTOR * pos_component

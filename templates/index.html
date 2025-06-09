@@ -1,87 +1,175 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8">
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h5 class="card-title mb-0"><i class="fas fa-cube me-2"></i>Blockchain Overview</h5>
+<div class="dashboard-header">
+    <h1 class="dashboard-title">Grishinium Blockchain Explorer</h1>
+    <p class="dashboard-subtitle">Real-time blockchain monitoring and analysis</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-cube"></i>
+        </div>
+        <div class="stat-content">
+            <h3 class="stat-value" id="block-height">Loading...</h3>
+            <p class="stat-label">Blocks</p>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-exchange-alt"></i>
+        </div>
+        <div class="stat-content">
+            <h3 class="stat-value" id="pending-tx">Loading...</h3>
+            <p class="stat-label">Pending Transactions</p>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-content">
+            <h3 class="stat-value" id="total-wallets">Loading...</h3>
+            <p class="stat-label">Total Wallets</p>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-network-wired"></i>
+        </div>
+        <div class="stat-content">
+            <h3 class="stat-value" id="active-nodes">Loading...</h3>
+            <p class="stat-label">Active Nodes</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-8">
+        <div class="card glass-card mb-4">
+            <div class="card-header">
+                <h5 class="card-title"><i class="fas fa-cube me-2"></i>Latest Blocks</h5>
+                <a href="/blocks" class="btn btn-sm btn-outline-primary">View All</a>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6>Current Block Height</h6>
-                        <p class="h3" id="block-height">Loading...</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>Pending Transactions</h6>
-                        <p class="h3" id="pending-tx">Loading...</p>
-                    </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Height</th>
+                                <th>Time</th>
+                                <th>Transactions</th>
+                                <th>Miner</th>
+                                <th>Size</th>
+                            </tr>
+                        </thead>
+                        <tbody id="latest-blocks">
+                            <tr>
+                                <td colspan="5" class="text-center py-4">Loading latest blocks...</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-        <div class="card">
-            <div class="card-header bg-success text-white">
-                <h5 class="card-title mb-0"><i class="fas fa-network-wired me-2"></i>Network Status</h5>
+        
+        <div class="card glass-card">
+            <div class="card-header">
+                <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i>Recent Transactions</h5>
+                <div class="header-actions">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="live-updates">
+                        <label class="form-check-label" for="live-updates">Live Updates</label>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table align-middle mb-0">
                         <thead>
                             <tr>
-                                <th>Node</th>
+                                <th>Transaction ID</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Amount</th>
                                 <th>Status</th>
-                                <th>Last Block</th>
-                                <th>Peers</th>
                             </tr>
                         </thead>
-                        <tbody id="node-status">
-                            {% for node in nodes %}
+                        <tbody id="recent-transactions">
                             <tr>
-                                <td>{{ node.name }}</td>
-                                <td>
-                                    <span class="status-indicator status-offline"></span>
-                                    <span class="status-text">Checking...</span>
-                                </td>
-                                <td>Loading...</td>
-                                <td>Loading...</td>
+                                <td colspan="5" class="text-center py-4">Loading recent transactions...</td>
                             </tr>
-                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <div class="card-header bg-info text-white">
-                <h5 class="card-title mb-0"><i class="fas fa-wallet me-2"></i>Main Wallet</h5>
+    
+    <div class="col-lg-4">
+        <div class="card glass-card mb-4">
+            <div class="card-header">
+                <h5 class="card-title"><i class="fas fa-search me-2"></i>Quick Search</h5>
             </div>
             <div class="card-body">
-                <div id="main-wallet-info">
-                    <p>Loading main wallet information...</p>
+                <form id="search-form">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="search-query" placeholder="Block hash, transaction ID or wallet address">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="search-options">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="search-type" id="search-all" value="all" checked>
+                        <label class="form-check-label" for="search-all">All</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="search-type" id="search-blocks" value="blocks">
+                        <label class="form-check-label" for="search-blocks">Blocks</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="search-type" id="search-txs" value="transactions">
+                        <label class="form-check-label" for="search-txs">Transactions</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="search-type" id="search-wallets" value="wallets">
+                        <label class="form-check-label" for="search-wallets">Wallets</label>
+                    </div>
                 </div>
-                <button class="btn btn-primary w-100 mt-3" id="initialize-main-wallet">
-                    Initialize Main Wallet
-                </button>
             </div>
         </div>
-
-        <div class="card">
-            <div class="card-header bg-warning text-dark">
-                <h5 class="card-title mb-0"><i class="fas fa-plus-circle me-2"></i>Create New Wallet</h5>
+        
+        <div class="card glass-card mb-4">
+            <div class="card-header">
+                <h5 class="card-title"><i class="fas fa-network-wired me-2"></i>Network Status</h5>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush" id="node-status">
+                    {% for node in nodes %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="status-indicator status-offline"></span>
+                            <span class="fw-medium">{{ node.name }}</span>
+                        </div>
+                        <span class="status-text">Checking...</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card glass-card">
+            <div class="card-header">
+                <h5 class="card-title"><i class="fas fa-chart-line me-2"></i>Network Activity</h5>
             </div>
             <div class="card-body">
-                <form id="create-wallet-form">
-                    <div class="mb-3">
-                        <label for="wallet-name" class="form-label">Wallet Name</label>
-                        <input type="text" class="form-control" id="wallet-name" required>
-                    </div>
-                    <button type="submit" class="btn btn-warning w-100">Create Wallet</button>
-                </form>
+                <canvas id="network-activity-chart" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -89,114 +177,273 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Обновление статуса нод
     function updateNodeStatus() {
         fetch('/api/status')
             .then(response => response.json())
-            .then(data => {
-                const tbody = document.getElementById('node-status');
-                tbody.innerHTML = '';
+            .then(function(data) {
+                const nodeStatusList = document.getElementById('node-status');
+                nodeStatusList.innerHTML = '';
                 
-                Object.entries(data).forEach(([url, status]) => {
-                    const node = {{ nodes|tojson }}.find(n => n.url === url);
+                let activeNodes = 0;
+                
+                Object.entries(data).forEach(function(entry) {
+                    const url = entry[0];
+                    const status = entry[1];
+                    const node = {{ nodes|tojson }}.find(function(n) { return n.url === url; });
                     if (node) {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${node.name}</td>
-                            <td>
+                        if (status.status === 'online') activeNodes++;
+                        
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+                        listItem.innerHTML = `
+                            <div>
                                 <span class="status-indicator status-${status.status}"></span>
-                                <span class="status-text">${status.status}</span>
-                            </td>
-                            <td>${status.data?.last_block || 'N/A'}</td>
-                            <td>${status.data?.peers || 'N/A'}</td>
+                                <span class="fw-medium">${node.name}</span>
+                            </div>
+                            <span class="status-text">${status.status}</span>
                         `;
-                        tbody.appendChild(row);
+                        nodeStatusList.appendChild(listItem);
                     }
                 });
+                
+                document.getElementById('active-nodes').textContent = activeNodes;
             })
-            .catch(error => console.error('Error fetching node status:', error));
+            .catch(function(error) { console.error('Error fetching node status:', error); });
     }
 
     // Обновление информации о блокчейне
     function updateBlockchainInfo() {
         fetch('/api/chain')
             .then(response => response.json())
-            .then(data => {
+            .then(function(data) {
                 document.getElementById('block-height').textContent = data.current_node.blocks.length;
                 document.getElementById('pending-tx').textContent = data.current_node.pending_transactions.length;
+                
+                // Обновление последних блоков
+                const latestBlocksTable = document.getElementById('latest-blocks');
+                latestBlocksTable.innerHTML = '';
+                
+                const blocks = data.current_node.blocks.slice(-5).reverse();
+                blocks.forEach(function(block) {
+                    const row = document.createElement('tr');
+                    const timestamp = new Date(block.timestamp * 1000);
+                    const timeString = timestamp.toLocaleTimeString();
+                    
+                    row.innerHTML = `
+                        <td>
+                            <a href="/blocks/${block.index}" class="block-link">
+                                <div class="d-flex align-items-center">
+                                    <div class="block-icon me-2">
+                                        <i class="fas fa-cube"></i>
+                                    </div>
+                                    <span>${block.index}</span>
+                                </div>
+                            </a>
+                        </td>
+                        <td>${timeString}</td>
+                        <td>${block.transactions.length}</td>
+                        <td>
+                            <a href="/wallets/${block.miner}" class="wallet-link">
+                                <div class="d-inline-block text-truncate" style="max-width: 120px;">
+                                    ${block.miner}
+                                </div>
+                            </a>
+                        </td>
+                        <td>${Math.round(JSON.stringify(block).length / 1024)} KB</td>
+                    `;
+                    latestBlocksTable.appendChild(row);
+                });
+                
+                // Обновление последних транзакций
+                const recentTxTable = document.getElementById('recent-transactions');
+                recentTxTable.innerHTML = '';
+                
+                const allTransactions = [];
+                blocks.forEach(function(block) {
+                    block.transactions.forEach(function(tx) {
+                        const newTx = {};
+                        Object.assign(newTx, tx);
+                        newTx.status = 'Confirmed';
+                        newTx.block = block.index;
+                        allTransactions.push(newTx);
+                    });
+                });
+                
+                data.current_node.pending_transactions.forEach(function(tx) {
+                    const newTx = {};
+                    Object.assign(newTx, tx);
+                    newTx.status = 'Pending';
+                    newTx.block = null;
+                    allTransactions.push(newTx);
+                });
+                
+                const recentTx = allTransactions.slice(-5).reverse();
+                recentTx.forEach(function(tx) {
+                    const row = document.createElement('tr');
+                    const txId = tx.id || 'Unknown';
+                    
+                    row.innerHTML = `
+                        <td>
+                            <div class="d-inline-block text-truncate" style="max-width: 120px;">
+                                ${txId}
+                            </div>
+                        </td>
+                        <td>
+                            <a href="/wallets/${tx.sender}" class="wallet-link">
+                                <div class="d-inline-block text-truncate" style="max-width: 120px;">
+                                    ${tx.sender}
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/wallets/${tx.recipient}" class="wallet-link">
+                                <div class="d-inline-block text-truncate" style="max-width: 120px;">
+                                    ${tx.recipient}
+                                </div>
+                            </a>
+                        </td>
+                        <td>${tx.amount} GRISH</td>
+                        <td>
+                            <span class="badge ${tx.status === 'Confirmed' ? 'badge-primary' : 'badge-secondary'}">
+                                ${tx.status}
+                            </span>
+                        </td>
+                    `;
+                    recentTxTable.appendChild(row);
+                });
             })
-            .catch(error => console.error('Error fetching chain info:', error));
+            .catch(function(error) { console.error('Error fetching chain info:', error); });
     }
 
-    // Обновление информации о главном кошельке
-    function updateMainWalletInfo() {
-        fetch('/api/main-wallet')
+    // Обновление общего количества кошельков
+    function updateWalletsCount() {
+        fetch('/api/wallets')
             .then(response => response.json())
-            .then(data => {
-                const mainWalletInfo = document.getElementById('main-wallet-info');
-                mainWalletInfo.innerHTML = `
-                    <p><strong>Address:</strong> ${data.address}</p>
-                    <p><strong>Balance:</strong> ${data.balance} GRISH</p>
-                `;
+            .then(function(data) {
+                document.getElementById('total-wallets').textContent = Object.keys(data.wallets).length;
             })
-            .catch(error => console.error('Error fetching main wallet info:', error));
+            .catch(function(error) { console.error('Error fetching wallets info:', error); });
     }
 
-    // Инициализация главного кошелька
-    document.getElementById('initialize-main-wallet').addEventListener('click', function() {
-        fetch('/api/initialize-main-wallet', { method: 'POST' })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Main wallet initialized successfully!');
-                    updateMainWalletInfo();
-                } else {
-                    alert('Error: ' + data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error initializing main wallet:', error);
-                alert('Error initializing main wallet');
-            });
-    });
-
-    // Создание нового кошелька
-    document.getElementById('create-wallet-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const walletName = document.getElementById('wallet-name').value;
+    // Инициализация графика сетевой активности
+    function initNetworkActivityChart() {
+        const ctx = document.getElementById('network-activity-chart').getContext('2d');
         
-        fetch('/api/create-wallet', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name: walletName })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Wallet created successfully!\nAddress: ' + data.address);
-                document.getElementById('wallet-name').value = '';
-            } else {
-                alert('Error: ' + data.error);
+        // Генерация случайных данных для демонстрации
+        const labels = [];
+        for (let i = 0; i < 7; i++) {
+            const d = new Date();
+            d.setDate(d.getDate() - (6 - i));
+            labels.push(d.toLocaleDateString('en-US', {month: 'short', day: 'numeric'}));
+        }
+        
+        const randomData = [];
+        for (let i = 0; i < 7; i++) {
+            randomData.push(Math.floor(Math.random() * 50) + 10);
+        }
+        
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Transactions',
+                data: randomData,
+                borderColor: '#00FFB2',
+                backgroundColor: 'rgba(0, 255, 178, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        };
+        
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }
+                }
             }
-        })
-        .catch(error => {
-            console.error('Error creating wallet:', error);
-            alert('Error creating wallet');
-        });
+        };
+        
+        new Chart(ctx, config);
+    }
+
+    // Обработчик формы поиска
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = document.getElementById('search-query').value.trim();
+        const searchType = document.querySelector('input[name="search-type"]:checked').value;
+        
+        if (query) {
+            let url = '';
+            
+            if (searchType === 'blocks' || (searchType === 'all' && query.match(/^\d+$/))) {
+                url = `/blocks/${query}`;
+            } else if (searchType === 'transactions' || (searchType === 'all' && query.length === 64)) {
+                url = `/transactions/${query}`;
+            } else if (searchType === 'wallets' || searchType === 'all') {
+                url = `/wallets/${query}`;
+            }
+            
+            if (url) {
+                window.location.href = url;
+            } else {
+                alert('No results found for your search query');
+            }
+        }
     });
 
-    // Периодическое обновление данных
+    // Переключатель живых обновлений
+    let liveUpdateInterval;
+    
+    document.getElementById('live-updates').addEventListener('change', function(e) {
+        if (e.target.checked) {
+            liveUpdateInterval = setInterval(function() {
+                updateBlockchainInfo();
+                updateNodeStatus();
+            }, 5000);
+        } else {
+            clearInterval(liveUpdateInterval);
+        }
+    });
+
+    // Инициализация
     updateNodeStatus();
     updateBlockchainInfo();
-    updateMainWalletInfo();
+    updateWalletsCount();
+    initNetworkActivityChart();
     
-    setInterval(updateNodeStatus, 5000);
-    setInterval(updateBlockchainInfo, 5000);
-    setInterval(updateMainWalletInfo, 5000);
+    // Включаем живые обновления по умолчанию
+    document.getElementById('live-updates').checked = true;
+    liveUpdateInterval = setInterval(function() {
+        updateBlockchainInfo();
+        updateNodeStatus();
+    }, 5000);
 });
 </script>
-{% endblock %} 
+{% endblock %}

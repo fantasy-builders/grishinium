@@ -93,7 +93,7 @@ TASK_REWARDS = {
     'telegram': 0.1,  # 0.1 GRISH за подписку на Telegram канал
     'twitter': 0.1,   # 0.1 GRISH за подписку на Twitter
     'linkedin': 0.1,   # 0.1 GRISH за подписку на LinkedIn
-    'mining': 0.05,   # 0.05 GRISH за сессию майнинга
+    'staking': 0.05,   # 0.05 GRISH за сессию стейкинга
     'daily': 0.2,     # 0.2 GRISH за выполнение ежедневного задания
     'skills': 1.0     # 1.0 GRISH за подтверждение навыков
 }
@@ -114,10 +114,10 @@ AVAILABLE_TASKS = {
     'linkedin': [
         {'id': 'grishinium_company', 'name': 'Grishinium Company', 'url': 'https://linkedin.com/company/grishinium'}
     ],
-    'mining': [
-        {'id': 'cpu_mining', 'name': 'CPU Mining', 'difficulty': 1, 'url': '/mining/cpu'},
-        {'id': 'gpu_mining', 'name': 'GPU Mining', 'difficulty': 2, 'url': '/mining/gpu'},
-        {'id': 'brain_mining', 'name': 'Brain Mining', 'difficulty': 3, 'url': '/mining/brain'}
+    'staking': [
+        {'id': 'basic_staking', 'name': 'Basic Staking', 'difficulty': 1, 'url': '/staking/basic'},
+        {'id': 'advanced_staking', 'name': 'Advanced Staking', 'difficulty': 2, 'url': '/staking/advanced'},
+        {'id': 'validator_staking', 'name': 'Validator Staking', 'difficulty': 3, 'url': '/staking/validator'}
     ],
     'daily': [
         {'id': 'login_bonus', 'name': 'Daily Login', 'description': 'Claim your daily login bonus', 'url': '#'},
@@ -538,68 +538,68 @@ def get_completed_tasks():
         logging.error(f"Error getting completed tasks: {e}")
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/mining/start', methods=['POST'])
-def start_mining():
-    """Начать майнинг (симуляция)"""
+@app.route('/api/staking/start', methods=['POST'])
+def start_staking():
+    """Начать стейкинг (симуляция)"""
     try:
         data = request.get_json()
-        if not data or 'address' not in data or 'miningType' not in data:
-            return jsonify({'error': 'Address and miningType are required'}), 400
+        if not data or 'address' not in data or 'stakingType' not in data:
+            return jsonify({'error': 'Address and stakingType are required'}), 400
         
         address = data['address']
-        mining_type = data['miningType']
+        staking_type = data['stakingType']
         
-        # Проверяем тип майнинга
-        valid_mining_types = [task['id'] for task in AVAILABLE_TASKS.get('mining', [])]
-        if mining_type not in valid_mining_types:
-            return jsonify({'error': 'Invalid mining type'}), 400
+        # Проверяем тип стейкинга
+        valid_staking_types = [task['id'] for task in AVAILABLE_TASKS.get('staking', [])]
+        if staking_type not in valid_staking_types:
+            return jsonify({'error': 'Invalid staking type'}), 400
         
         # Проверяем существование кошелька
         wallet_path = os.path.join(WALLETS_DIR, f'{address}.json')
         if not os.path.exists(wallet_path):
             return jsonify({'error': 'Wallet not found'}), 404
             
-        # Генерируем сложность для mining puzzle
-        difficulty = next((task['difficulty'] for task in AVAILABLE_TASKS['mining'] if task['id'] == mining_type), 1)
+        # Генерируем сложность для staking puzzle
+        difficulty = next((task['difficulty'] for task in AVAILABLE_TASKS['staking'] if task['id'] == staking_type), 1)
         
         # Генерируем случайную строку в качестве challenge
-        mining_challenge = ''.join(format(x, '02x') for x in os.urandom(16))
+        staking_challenge = ''.join(format(x, '02x') for x in os.urandom(16))
         
-        # Сохраняем информацию о сессии майнинга
-        mining_sessions_file = os.path.join(WALLETS_DIR, f'{address}_mining_sessions.json')
-        mining_sessions = {}
-        if os.path.exists(mining_sessions_file):
-            with open(mining_sessions_file, 'r') as f:
-                mining_sessions = json.load(f)
+        # Сохраняем информацию о сессии стейкинга
+        staking_sessions_file = os.path.join(WALLETS_DIR, f'{address}_staking_sessions.json')
+        staking_sessions = {}
+        if os.path.exists(staking_sessions_file):
+            with open(staking_sessions_file, 'r') as f:
+                staking_sessions = json.load(f)
         
-        # Создаем новую сессию майнинга
+        # Создаем новую сессию стейкинга
         session_id = ''.join(format(x, '02x') for x in os.urandom(8))
-        mining_sessions[session_id] = {
-            'type': mining_type,
-            'challenge': mining_challenge,
+        staking_sessions[session_id] = {
+            'type': staking_type,
+            'challenge': staking_challenge,
             'difficulty': difficulty,
             'start_time': time.time(),
             'status': 'active',
             'target': '0' * difficulty + 'f' * (16 - difficulty)  # Задаем цель для PoW
         }
         
-        with open(mining_sessions_file, 'w') as f:
-            json.dump(mining_sessions, f, indent=2)
+        with open(staking_sessions_file, 'w') as f:
+            json.dump(staking_sessions, f, indent=2)
         
-        logging.info(f"Started mining session {session_id} for {address} with type {mining_type}")
+        logging.info(f"Started staking session {session_id} for {address} with type {staking_type}")
         return jsonify({
             'session_id': session_id,
-            'challenge': mining_challenge,
+            'challenge': staking_challenge,
             'difficulty': difficulty,
-            'target': mining_sessions[session_id]['target']
+            'target': staking_sessions[session_id]['target']
         })
     except Exception as e:
-        logging.error(f"Error starting mining session: {e}")
+        logging.error(f"Error starting staking session: {e}")
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/mining/submit', methods=['POST'])
-def submit_mining_result():
-    """Отправить результат майнинга"""
+@app.route('/api/staking/submit', methods=['POST'])
+def submit_staking_result():
+    """Отправить результат стейкинга"""
     try:
         data = request.get_json()
         if not data or 'address' not in data or 'sessionId' not in data or 'nonce' not in data:
@@ -614,33 +614,33 @@ def submit_mining_result():
         if not os.path.exists(wallet_path):
             return jsonify({'error': 'Wallet not found'}), 404
             
-        # Проверяем существование сессии майнинга
-        mining_sessions_file = os.path.join(WALLETS_DIR, f'{address}_mining_sessions.json')
-        if not os.path.exists(mining_sessions_file):
-            return jsonify({'error': 'No mining sessions found'}), 404
+        # Проверяем существование сессии стейкинга
+        staking_sessions_file = os.path.join(WALLETS_DIR, f'{address}_staking_sessions.json')
+        if not os.path.exists(staking_sessions_file):
+            return jsonify({'error': 'No staking sessions found'}), 404
             
-        with open(mining_sessions_file, 'r') as f:
-            mining_sessions = json.load(f)
+        with open(staking_sessions_file, 'r') as f:
+            staking_sessions = json.load(f)
             
-        if session_id not in mining_sessions:
-            return jsonify({'error': 'Mining session not found'}), 404
+        if session_id not in staking_sessions:
+            return jsonify({'error': 'Staking session not found'}), 404
             
-        session = mining_sessions[session_id]
+        session = staking_sessions[session_id]
         if session['status'] != 'active':
-            return jsonify({'error': 'Mining session is not active'}), 400
+            return jsonify({'error': 'Staking session is not active'}), 400
             
         # Получаем информацию о сессии
         challenge = session['challenge']
         target = session['target']
         
-        # Проверяем результат майнинга (простая симуляция PoW)
+        # Проверяем результат стейкинга (простая симуляция PoW)
         import hashlib
         result = hashlib.sha256(f"{challenge}{nonce}".encode()).hexdigest()
         
         if result < target:
             # Результат подходит, награждаем пользователя
-            mining_type = session['type']
-            reward = TASK_REWARDS['mining']
+            staking_type = session['type']
+            reward = TASK_REWARDS['staking']
             difficulty_multiplier = session['difficulty']
             final_reward = reward * difficulty_multiplier
             
@@ -653,8 +653,8 @@ def submit_mining_result():
             session['reward'] = final_reward
             session['result_hash'] = result
             
-            with open(mining_sessions_file, 'w') as f:
-                json.dump(mining_sessions, f, indent=2)
+            with open(staking_sessions_file, 'w') as f:
+                json.dump(staking_sessions, f, indent=2)
                 
             # Обновляем баланс кошелька
             with open(wallet_path, 'r') as f:
@@ -663,22 +663,22 @@ def submit_mining_result():
                 with open(wallet_path, 'w') as f:
                     json.dump(wallet_data, f, indent=2)
                     
-            logging.info(f"Mining session {session_id} completed for {address} with reward {final_reward} GRISH")
+            logging.info(f"Staking session {session_id} completed for {address} with reward {final_reward} GRISH")
             return jsonify({
                 'success': True,
                 'reward': final_reward,
-                'message': f'Mining successful! You earned {final_reward} GRISH',
+                'message': f'Staking successful! You earned {final_reward} GRISH',
                 'new_balance': wallet_data['balance']
             })
         else:
             # Результат не подходит
-            logging.info(f"Failed mining attempt for session {session_id}: {result} >= {target}")
+            logging.info(f"Failed staking attempt for session {session_id}: {result} >= {target}")
             return jsonify({
                 'success': False,
-                'message': 'Mining failed. The result did not meet the target difficulty.'
+                'message': 'Staking failed. The result did not meet the target difficulty.'
             }), 400
     except Exception as e:
-        logging.error(f"Error submitting mining result: {e}")
+        logging.error(f"Error submitting staking result: {e}")
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/daily/check', methods=['GET'])

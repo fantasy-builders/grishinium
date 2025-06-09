@@ -102,7 +102,7 @@ class Blockchain:
         # Добавляем реестр токенов
         self.token_ledger = TokenLedger()
         self.create_genesis_block()
-        
+    
     def create_genesis_block(self) -> None:
         """Создает генезис-блок и выполняет первоначальную эмиссию токенов."""
         # Создаем генезис-транзакцию для токенов
@@ -131,11 +131,11 @@ class Blockchain:
         self.chain.append(genesis_block)
         
         logger.info(f"Создан генезис-блок с начальной эмиссией {format_token_amount(genesis_token_tx.amount)}")
-        
+    
     def get_latest_block(self) -> Block:
         """Возвращает последний блок в цепи."""
         return self.chain[-1]
-        
+    
     def add_block(self, transactions: List[Dict[str, Any]], validator: str) -> bool:
         """
         Добавляет новый блок в цепь.
@@ -263,7 +263,7 @@ class Blockchain:
             tx for tx in self.pending_transactions 
             if not ("tx_id" in tx and tx["tx_id"] in confirmed_ids)
         ]
-        
+    
     def is_chain_valid(self) -> bool:
         """
         Проверяет валидность всей цепи.
@@ -278,11 +278,11 @@ class Blockchain:
             # Проверяем хэш текущего блока
             if current_block.hash != current_block.calculate_hash():
                 return False
-                
+            
             # Проверяем связь с предыдущим блоком
             if current_block.previous_hash != previous_block.hash:
                 return False
-                
+            
             # Проверяем валидность блока через консенсус
             if not self.consensus.verify_block(current_block.to_dict(), previous_block.to_dict()):
                 return False
@@ -358,7 +358,7 @@ class Blockchain:
             sender: Адрес стейкера
             amount: Количество токенов для стейкинга
             fee: Комиссия за транзакцию
-            
+        
         Returns:
             bool: Успешность операции
         """
